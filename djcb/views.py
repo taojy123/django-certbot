@@ -37,11 +37,10 @@ def makessl(request):
         result += '\n==============================================\n'
         result += key
 
-        Domain.objects.create(
-            name=domain,
-            cert=cert,
-            key=key,
-        )
+        d, created = Domain.objects.get_or_create(name=domain)
+        d.cert = cert
+        d.key = key
+        d.save()
 
         return HttpResponse(result)
 
