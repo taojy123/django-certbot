@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^index/$', index),
 
     url(r'^makessl/$', makessl),
+    url(r'^(\.well-known/.+)$', well_known),
 
 ]
 
