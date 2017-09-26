@@ -23,7 +23,7 @@ def makessl(request):
     if not urllib2.urlopen('http://%s/' % domain).read():
         return HttpResponse('domain can not open')
 
-    if os.path.exists(WEBROOT):
+    if not os.path.exists(WEBROOT):
         os.mkdir(WEBROOT)
 
     cmd = 'certbot certonly --webroot -n --agree-tos --email taojy123@163.com -d %s -w %s' % (domain, WEBROOT)
